@@ -16,9 +16,9 @@
 		<header>
 			<nav>
 				<ul>
-					<li class="current_page_item"><a href="index.html">Menu</a></li>
-					<li><a href="sobre.html">Sobre</a></li>
-					<li><a href="contato.html">Contato</a></li>
+					<li class="current_page_item"><a href="/">Menu</a></li>
+					<li><a href="/restwp/sobre/">Sobre</a></li>
+					<li><a href="/restwp/contato/">Contato</a></li>
 				</ul>
 			</nav>
 
