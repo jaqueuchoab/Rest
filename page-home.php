@@ -5,8 +5,11 @@
 ?>
 <!--linkando o header.php-->
 <?php get_header(); ?>	
+
+<?php if ( have_posts() ) : while ( have_posts() ) : the_post(); ?>
+
 		<section class="container">
-			<h2 class="subtitulo">Menu da Semana</h2>
+			<h2 class="subtitulo"><?php the_title(); ?></h2>
 
 			<div class="menu-item grid-8">
 				<h2>Peixes</h2>
@@ -63,4 +66,7 @@
 			</div>
 
 		</section>
+
+<?php endwhile; else: endif?>
+
 <?php get_footer(); ?>	
