@@ -56,8 +56,23 @@ Adicionar o Loop as páginas e ao index.php
 <p><?php _e('Sorry, no posts matched your criteria.'); ?></p>
 <?php endif; ?>
 
-12 - Advanced Custom Fields
+12 - Advanced Custom Fields ou CMB2, o primeiro é pago e o segundo é grátis. 
+Além de ter a versão nativa integrada ao wordpress.
+Usado no projeto Rest: CMB2
 
-Adicionar o Plugin Advanced Custom Fields
-Iniciar a troca do conteúdo por fields, <?php the_field('nome_conteudo'); ?>
-Adicionar o conteúdo a interface do Custom Fields.
+Como usar o CMB2:
+
+1 - Baixar e ativar o plugin CMB2;
+2 - Criar arquivo functions.php; (Página de configurações gerais do tema, sempre que cada página do site for aberta esse arquivo atuará em seu auxilio.)
+3 - Restante dos passos no arquivo functions.php;
+4 - Criar uma função que facilite a chamada das informações do wordpress, presente no arquivo functions.php;
+
+13 - Usar imagens com cmb2
+ANOTAÇÕES IMPORTANTES:
+
+- Pegar o ID de uma página:
+  <?php $pag = get_page_by_title('Nome da Página')->ID; ?>
+A partir disso pode ser usada essa variável para indicar na função: 
+  <?php echo get_post_meta(get_the_ID(), 'historia', true); ?>
+Que serve para pegar conteúdo do wordpress de forma nativa, adicionando novos campos de conteúdo.
+

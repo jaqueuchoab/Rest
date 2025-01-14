@@ -12,7 +12,7 @@
 			<h2 class="subtitulo"><?php the_title(); ?></h2>
 
 			<div class="menu-item grid-8">
-				<h2>Peixes</h2>
+				<h2><?php the_field_cmb2('comida'); ?></h2>
 				<ul>
 					<li>
 						<span><sup>R$</sup>129</span>
