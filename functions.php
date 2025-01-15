@@ -1,6 +1,13 @@
 <?php
 // Os nomes das funções devem ser nomes únicos e mais detalhados para se diferenciar das funções do próprio wordpress.
 
+function loading_scripts_cmb2() {
+    wp_enqueue_media(); // Envia o script do WordPress para upload de arquivos
+}
+
+add_action('admin_enqueue_scripts', 'loading_scripts_cmb2');
+
+
 // Função padrão para pegar campos do wordpress;
 function get_field_cmb2($key, $page_id = 0) {
     $id = $page_id !== 0 ? $page_id : get_the_ID();
@@ -58,6 +65,8 @@ function cmb2_fields_home() {
     ]);
 }
 
+// Aqui tem um erro do próprio plugin, vou comentar e usar como exemplo para caso volte a funcionar, vou utilizar outra estratégia para puxar imagens;
+/*
 // Ação para a página sobre
 add_action('cmb2_admin_init', 'cmb2_fields_sobre');
 
@@ -73,11 +82,23 @@ function cmb2_fields_sobre() {
         ],
     ]);
 
+    error_log('CMB2 fields loaded');
+
+    // Adionando campo de imagem, tipo do campo será 'file', permite configuração de outras opções
     $cmb->add_field([
-        'name' => 'Comida',
-        'id' => 'comida',
-        'type' => 'text',
+        'name' => 'Foto Rest',
+        'id' => 'foto_rest',
+        'type' => 'file',
+        'options' => [
+            'url' => false,
+        ],
+        'text' => [
+            'add_upload_file_text' => 'Adicionar uma imagem'
+        ],
+        'attributes' => [
+            'data-mediaid' => '', // Certifique-se de que o campo 'mediaid' é inicializado
+        ],
     ]);
 }
-
+*/
 ?>
