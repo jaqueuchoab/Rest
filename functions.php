@@ -1,3 +1,7 @@
+<!--
+Importante: No curso foi usado o ACF com ferramento para criar campos na interface do wordpress, mas eu resolvi utilizar o CMB2. Então, sempre ir relembrando como fazer alguns campos por aqui. Em alguns momentos o instrutor vai querer utilizar um tipo de campo mais robusto e editável em vez de apenas 'text', o nome do tipo de campo é 'wysiwyg'
+-->
+
 <?php
 // Os nomes das funções devem ser nomes únicos e mais detalhados para se diferenciar das funções do próprio wordpress.
 
@@ -52,6 +56,9 @@ function cmb2_fields_home() {
         3 - Atualiza a interface wordpress e adiciona um campo;
         4 - Puxar a informação do wordpress: mesma forma nativa do wordpress (anotação de como fazer no arquivo txt);
     */
+
+    // Campos indivíduais
+    /*
     $cmb->add_field([
         'name' => 'Comida',
         'id' => 'comida',
@@ -62,6 +69,44 @@ function cmb2_fields_home() {
         'name' => 'Descrição',
         'id' => 'descricao',
         'type' => 'textarea',
+    ]);
+    */
+
+    // Campo repetidor do tipo group, necessário adicionar o campo a uma variável
+    // Prato {#}, o # indica o número do campo
+    // 'sortable' indica que há como reorganizazar os campos na interface do wp
+    $pratos = $cmb->add_field([
+        'name' => 'Pratos',
+        'id' => 'pratos',
+        'type' => 'group',
+        'repeatable' => true,
+        'options' => [
+            'group_title' => 'Prato {#}',
+            'add_button' => 'Adicionar',
+            'remove_button' => 'Remover',
+            'sortable' => true,
+        ],
+    ]);
+
+    // Cada campo é adicionado com o add_group_field
+    // Passando sempre o campo de grupo como primeiro argumento
+    // VER COMO USAR OS VALORES DOS CAMPOS DE GRUPOS/REPETIDORES NA PAGE-HOME
+    $cmb->add_group_field($pratos, [
+        'name' => 'Nome',
+        'id' => 'nome',
+        'type' => 'text',
+    ]);
+
+    $cmb->add_group_field($pratos, [
+        'name' => 'Descrição',
+        'id' => 'descricao',
+        'type'=> 'text',
+    ]);
+
+    $cmb->add_group_field($pratos, [
+        'name'=> 'Preço',
+        'id' => 'preco',
+        'type' => 'text',
     ]);
 }
 
@@ -101,4 +146,7 @@ function cmb2_fields_sobre() {
     ]);
 }
 */
+
+// Repetidor de campo
+
 ?>

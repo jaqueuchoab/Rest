@@ -14,27 +14,24 @@
 			<div class="menu-item grid-8">
 				<h2><?php the_field_cmb2('comida'); ?></h2>
 				<ul>
+					<?php
+					// USANDO OS VALORES DE CAMPOS AGRUPADORES/REPETIDORES
+					// Variável que guarda os campos
+					$pratos = get_field_cmb2('pratos');
+					// Abriu um bloco de if{} e um bloco foreach{}, a função isset() no bloco de if verifica se há itens na var/campo de pratos
+					if (isset($pratos)) { foreach($pratos as $prato) { ?>
 					<li>
-						<span><sup>R$</sup>129</span>
+						<!-- Buscando no prato[index] o valor da key 'preco', similar a objetos em js-->
+						<span><?php echo $prato['preco']; ?></span>
 						<div>
-							<h3>Salmão Grelhado no Forno</h3>
-							<p>Pequenas tiras de salmão feitas no alho e óleo</p>
+							<h3><?php echo $prato['nome']; ?></h3>
+							<p><?php echo $prato['descricao']; ?></p>
 						</div>
 					</li>
-					<li>
-						<span><sup>R$</sup>89</span>
-						<div>
-							<h3>Sardinha Frita na Cerveja</h3>
-							<p>Sardinhas escolhidas a dedo e fritas em cerveja premium</p>
-						</div>
-					</li>
-					<li>
-						<span><sup>R$</sup>159</span>
-						<div>
-							<h3>Camarão com Catupiry</h3>
-							<p>Grandes camarões grelhados, servidos ao molho de camarão com catupiry</p>
-						</div>
-					</li>
+					<?php 
+					// Fechando os blocos de foreach e if, respectivamente
+					} }
+					?>
 				</ul>
 			</div>
 
