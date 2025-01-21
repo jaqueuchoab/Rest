@@ -12,17 +12,17 @@
 			<h2 class="subtitulo"><?php the_title(); ?></h2>
 
 			<div class="menu-item grid-8">
-				<h2><?php the_field_cmb2('comida'); ?></h2>
+				<h2><?php the_field_cmb2('comida1'); ?></h2>
 				<ul>
 					<?php
 					// USANDO OS VALORES DE CAMPOS AGRUPADORES/REPETIDORES
 					// Variável que guarda os campos
-					$pratos = get_field_cmb2('pratos');
+					$pratos = get_field_cmb2('pratos1');
 					// Abriu um bloco de if{} e um bloco foreach{}, a função isset() no bloco de if verifica se há itens na var/campo de pratos
 					if (isset($pratos)) { foreach($pratos as $prato) { ?>
 					<li>
 						<!-- Buscando no prato[index] o valor da key 'preco', similar a objetos em js-->
-						<span><?php echo $prato['preco']; ?></span>
+						<span><sup>R$</sup><?php echo $prato['preco']; ?></span>
 						<div>
 							<h3><?php echo $prato['nome']; ?></h3>
 							<p><?php echo $prato['descricao']; ?></p>
@@ -36,29 +36,26 @@
 			</div>
 
 			<div class="menu-item grid-8">
-				<h2>Carnes</h2>
+				<h2><?php the_field_cmb2('comida2'); ?></h2>
 				<ul>
+					<?php
+					// USANDO OS VALORES DE CAMPOS AGRUPADORES/REPETIDORES
+					// Variável que guarda os campos
+					$pratos = get_field_cmb2('pratos2');
+					// Abriu um bloco de if{} e um bloco foreach{}, a função isset() no bloco de if verifica se há itens na var/campo de pratos
+					if (isset($pratos)) { foreach($pratos as $prato) { ?>
 					<li>
-						<span><sup>R$</sup>129</span>
+						<!-- Buscando no prato[index] o valor da key 'preco', similar a objetos em js-->
+						<span><sup>R$</sup><?php echo $prato['preco']; ?></span>
 						<div>
-							<h3>Picanha Nobre no Alho</h3>
-							<p>Pequenas tiras de salmão feitas no alho e óleo</p>
+							<h3><?php echo $prato['nome']; ?></h3>
+							<p><?php echo $prato['descricao']; ?></p>
 						</div>
 					</li>
-					<li>
-						<span><sup>R$</sup>89</span>
-						<div>
-							<h3>Cupim no Bafo</h3>
-							<p>Sardinhas escolhidas a dedo e fritas em cerveja premium</p>
-						</div>
-					</li>
-					<li>
-						<span><sup>R$</sup>159</span>
-						<div>
-							<h3>Hamburger Artesanal Rest</h3>
-							<p>Grandes camarões grelhados, servidos ao molho de camarão com catupiry</p>
-						</div>
-					</li>
+					<?php 
+					// Fechando os blocos de foreach e if, respectivamente
+					} }
+					?>
 				</ul>
 			</div>
 
