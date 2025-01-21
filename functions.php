@@ -177,6 +177,105 @@ function cmb2_fields_sobre() {
 }
 */
 
-// Repetidor de campo
+// Repetidor de campo, página sobre
+// Ação para a página sobre
+add_action('cmb2_admin_init', 'cmb2_fields_sobre');
+
+// função para a página sobre
+function cmb2_fields_sobre() {
+    // Caixa onde os campos para edição irão ser vistos
+    $cmb = new_cmb2_box([
+        'id' => 'sobre_box',
+        'title' => 'Sobre',
+        'object_types' => ['page'],
+        'show_on' => [
+            'key' => 'page-template',
+            'value' => 'page-sobre.php',
+        ],
+    ]);
+
+    // Campo repetidor/agrupador
+    $topicos = $cmb->add_field([
+        'name' => 'Topicos',
+        'id' => 'topicos',
+        'type' => 'group',
+        'repeatable' => true,
+        'options' => [
+            'group_title' => 'Topicos {#}',
+            'add_button' => 'Adicionar',
+            'remove_button' => 'Remover tópico',
+            'sortable' => true,
+        ],
+    ]);
+
+    // Campo individual do campo agrupado tópicos
+    $cmb->add_group_field($topicos, [
+        'name' => 'Titulo',
+        'id' => 'titulo',
+        'type' => 'text',
+    ]);
+
+    $cmb->add_group_field($topicos, [
+        'name' => 'Descricao',
+        'id' => 'descricao',
+        'type' => 'textarea'
+    ]);
+}
+
+// Ação na página de contato
+add_action('cmb2_admin_init', 'cmb2_fields_contato');
+
+// Função para a página de contato
+function cmb2_fields_contato() {
+    // Caixa onde os campos para edição irão ser vistos
+    $cmb = new_cmb2_box([
+        'id' => 'contato_box',
+        'title' => 'Contato',
+        'object_types' => ['page'],
+        'show_on' => [
+            'key' => 'page-template',
+            'value' => 'page-contato.php',
+        ],
+    ]);
+
+    // Campo repetidor/agrupador
+    $informes = $cmb->add_field([
+        'name' => 'Informes',
+        'id' => 'informes',
+        'type' => 'group',
+        'repeatable' => true,
+        'options' => [
+            'group_title' => 'Informes {#}',
+            'add_button' => 'Adicionar',
+            'remove_button' => 'Remover informe',
+            'sortable' => true,
+        ],
+    ]);
+
+    // Campo individual do campo agrupado tópicos
+    $cmb->add_group_field($informes, [
+        'name' => 'Titulo',
+        'id' => 'titulo',
+        'type' => 'text',
+    ]);
+
+    $cmb->add_group_field($informes, [
+        'name' => 'Informe_um',
+        'id' => 'informe_um',
+        'type' => 'text',
+    ]);
+
+    $cmb->add_group_field($informes, [
+        'name' => 'Informe_dois',
+        'id' => 'informe_dois',
+        'type' => 'text',
+    ]);
+
+    $cmb->add_group_field($informes, [
+        'name' => 'Informe_tres',
+        'id' => 'informe_tres',
+        'type' => 'text',
+    ]);
+}
 
 ?>

@@ -11,24 +11,18 @@
 				<a href="https://www.google.com.br/maps" target="_blank"><img src="<?php echo get_stylesheet_directory_uri(); ?>/img/rest-mapa.jpg" alt="Fachada do Rest"></a>
 			</div>
 
-			<div class="grid-1-3 contato-item">
-				<h2>Dados</h2>
-				<p>21 2422-9999</p>
-				<p>contato@rest.com</p>
-				<p>facebook.com/rest/</p>
-			</div>
-			<div class="grid-1-3 contato-item">
-				<h2>Horários</h2>
-				<p>Segunda à Sexta: 10 às 23</p>
-				<p>Sábado: 14 às 23</p>
-				<p>Domingo: 14 às 22</p>
-			</div>
-			<div class="grid-1-3 contato-item">
-				<h2>Endereço</h2>
-				<p>Rua Marechal, 29</p>
-				<p>Copacabana - Rio de Janeiro</p>
-				<p>Brasil - Terra - Via Láctea</p>
-			</div>
+			
+			<?php 
+			$informes = get_field_cmb2('informes');
+
+			if(isset($informes)) { foreach($informes as $informe) { ?>
+				<div class="grid-1-3 contato-item">
+					<h2><?php echo $informe['titulo'] ?></h2>
+					<p><?php echo $informe['informe_um'] ?></p>
+					<p><?php echo $informe['informe_dois'] ?></p>
+					<p><?php echo $informe['informe_tres'] ?></p>
+				</div>
+			<?php } } ?>
 		</section>
 
 <?php endwhile; else: endif; ?>
