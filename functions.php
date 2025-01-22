@@ -276,6 +276,18 @@ function cmb2_fields_contato() {
         'id' => 'informe_tres',
         'type' => 'text',
     ]);
+    
+    $cmb->add_field([
+        'name' => 'Endereco',
+        'id' => 'endereco_header',
+        'type' => 'text',
+    ]);
+
+    $cmb->add_field([
+        'name' => 'Telefone',
+        'id' => 'telefone_header',
+        'type' => 'text',
+    ]);
 }
 
 ?>
