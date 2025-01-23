@@ -29,6 +29,7 @@ add_action('cmb2_admin_init', 'cmb2_fields_home');
 
 // Função de configuração de fields da página home
 function cmb2_fields_home() {
+    cmb2_fields_geral();
     // Criar uma nova caixa de campo, função abaixo (nativa), recebe uma array com pares de chave e valor
     /* Configuração da caixa: 
         1 - id do campo;
@@ -183,6 +184,7 @@ add_action('cmb2_admin_init', 'cmb2_fields_sobre');
 
 // função para a página sobre
 function cmb2_fields_sobre() {
+    cmb2_fields_geral();
     // Caixa onde os campos para edição irão ser vistos
     $cmb = new_cmb2_box([
         'id' => 'sobre_box',
@@ -227,6 +229,7 @@ add_action('cmb2_admin_init', 'cmb2_fields_contato');
 
 // Função para a página de contato
 function cmb2_fields_contato() {
+    cmb2_fields_geral();
     // Caixa onde os campos para edição irão ser vistos
     $cmb = new_cmb2_box([
         'id' => 'contato_box',
@@ -286,6 +289,41 @@ function cmb2_fields_contato() {
     $cmb->add_field([
         'name' => 'Telefone',
         'id' => 'telefone_header',
+        'type' => 'text',
+    ]);
+
+    $cmb->add_field([
+        'name' => 'Link_mapa',
+        'id'=> 'link_mapa',
+        'type' => 'text',
+    ]);
+}
+
+// Ação na página de header
+add_action('cmb2_admin_init', 'cmb2_fields_geral');
+
+// Função para a página de header
+function cmb2_fields_geral() {
+    // Caixa onde os campos para edição irão ser vistos
+    $cmb = new_cmb2_box([
+        'id' => 'seo_box',
+        'title' => 'SEO',
+        'object_types' => ['post', 'page'],
+        'show_on' => [
+            'key' => ['post', 'page-template'],
+            'value' => ['page-home.php', 'page-contato.php', 'page-sobre.php'],
+        ],
+    ]);
+
+    $cmb->add_field([
+        'name' => 'Titulo Seo',
+        'id'=> 'title_seo',
+        'type' => 'text',
+    ]);
+
+    $cmb->add_field([
+        'name' => 'Description Seo',
+        'id'=> 'description_seo',
         'type' => 'text',
     ]);
 }
