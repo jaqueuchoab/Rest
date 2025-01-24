@@ -67,7 +67,22 @@ Como usar o CMB2:
 3 - Restante dos passos no arquivo functions.php;
 4 - Criar uma função que facilite a chamada das informações do wordpress, presente no arquivo functions.php;
 
-13 - Usar imagens com cmb2
+13 - Adicionar menus
+
+arquivo functions.php
+// Habilitar Menu
+add_theme_support('menus');
+
+- No Wordpress aparece em aparências a opção menu, e pode ser adicionado a menu paginas e post.
+- Dentro da tag header/nav adicionar o código abaixo: menu se refere ao nome dele e container se refere a se ele vai estar envolvido em alguma tag
+  <?php 
+    $args = array(
+      'menu' => 'principal',
+      'container' => false  
+    );
+    wp_nav_menu($args);
+  ?>
+
 ANOTAÇÕES IMPORTANTES:
 
 - Pegar o ID de uma página:

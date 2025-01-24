@@ -326,6 +326,17 @@ function cmb2_fields_geral() {
         'id'=> 'description_seo',
         'type' => 'text',
     ]);
-}
+};
+
+// Habilitar Menu
+add_theme_support('menus');
+
+// Registrando o menu, para caso precise de mais menu
+function register_my_menu() {
+    register_nav_menu('header-menu', __('Header Menu'));
+};
+
+add_action('init', 'register_my_menu');
+
 
 ?>
